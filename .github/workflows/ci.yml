@@ -20,6 +20,14 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install --yes bubblewrap
+      - name: Permit unprivileged user namespaces
+        run: |
+          # GitHub's ubuntu-24.04+ runners confine unprivileged user namespaces
+          # via AppArmor, which stops bubblewrap from creating its sandbox. The
+          # black-box acceptance probes fail closed ("version is unavailable")
+          # without it; the runner VM is disposable, so restore standard kernel
+          # behavior before the suite executes anything.
+          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
 
       - name: Install pinned Rust toolchain
         run: |

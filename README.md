@@ -185,7 +185,7 @@ Adapter flags alone are **not a security sandbox**. Bubblewrap now independently
 
 ## Release status
 
-This repository is **not ready for public distribution or adoption**. The owner has not selected a license, but licensing alone is deliberately insufficient: readiness also requires a public-release-approving review disposition, all gates, notices, an SBOM, protected owner approval, and reproducibility evidence. The independent CAIO review says **do not approve**; the integrated disposition allows only tightly isolated local development and blocks public, persistent, multi-user, sensitive-data, and write-capable modes. See `docs/LICENSING.md`, `docs/THREAT-MODEL.md`, and `docs/reviews/v0.2/integrated-disposition.md`.
+This source tree is licensed `MIT OR Apache-2.0` (ratified 2026-08-31) and the repository is public, **but it is not ready for adoption, packaging, or formal distribution**. Licensing alone is deliberately insufficient: release readiness also requires a public-release-approving review disposition, all gates, third-party notices, an SBOM, protected owner approval, and reproducibility evidence. The independent CAIO review says **do not approve**; the integrated disposition allows only tightly isolated local development and blocks public, persistent, multi-user, sensitive-data, and write-capable modes. See `docs/LICENSING.md`, `docs/THREAT-MODEL.md`, and `docs/reviews/v0.2/integrated-disposition.md`.
 
 ## Project map
 

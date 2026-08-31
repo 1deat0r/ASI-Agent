@@ -832,9 +832,16 @@ function release() {
   }
   const packageScript = join(root, "scripts", "package.mjs");
   assert(existsSync(packageScript), "release packaging script is missing");
-  assert(!existsSync(join(root, "LICENSE")), "LICENSE appeared without an explicit owner decision");
+  assert(existsSync(join(root, "LICENSE")), "owner-ratified LICENSE file is missing");
   const currentBlockers = releaseBlockers(root);
-  assert(currentBlockers.some((blocker) => blocker.includes("LICENSE")), "missing license did not block release");
+  assert(
+    !currentBlockers.some((blocker) => blocker.includes("owner-selected LICENSE is missing")),
+    "ratified license did not clear the license-missing blocker",
+  );
+  assert(
+    currentBlockers.some((blocker) => blocker.includes("Release status: APPROVED")),
+    "license ratification alone did not keep release blocked",
+  );
   assert(
     currentBlockers.some((blocker) => blocker.includes("independent-review disposition")),
     "non-approving independent review did not block release",
@@ -858,10 +865,10 @@ function release() {
     env: process.env,
     timeout: 30_000,
   });
-  assert(blocked.status !== 0, "packaging proceeded without a selected license");
+  assert(blocked.status !== 0, "packaging proceeded while release remains blocked");
   assert(
-    `${blocked.stdout}\n${blocked.stderr}`.toLowerCase().includes("license"),
-    "packaging failure did not explain the license blocker",
+    `${blocked.stdout}\n${blocked.stderr}`.toLowerCase().includes("licensing"),
+    "packaging failure did not explain the licensing blocker",
   );
   assert(!existsSync(join(root, "dist")), "blocked packaging left a release directory behind");
   process.stdout.write("release acceptance passed\n");

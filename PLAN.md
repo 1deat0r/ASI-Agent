@@ -1,6 +1,6 @@
 # ASI Agent build plan — visceral nucleus
 
-Status: V0.1 COMPLETE; V0.2 ENGINEERING COMPLETE — ADOPTION AND PUBLIC RELEASE BLOCKED  
+Status: V0.1 COMPLETE; V0.2 ENGINEERING COMPLETE; SOURCE PUBLIC UNDER `MIT OR Apache-2.0` (ratified 2026-08-31) — ADOPTION, PACKAGING, AND FORMAL RELEASES REMAIN BLOCKED  
 Mode: Solo depth tree; one coherent vertical slice, no concurrent file ownership.  
 Toolchain: Rust 1.98.0 via explicit stable toolchain paths; Node.js for black-box acceptance checks.  
 Default authority: no tools or read-only only. Workspace writes and external side effects are denied.
@@ -94,7 +94,29 @@ V0.2 non-goals:
 - no claim that Bubblewrap mediates provider traffic or hides host-readable secrets;
 - no workspace writes or external-effect authority;
 - no automatic key rotation, remote transparency service, promotion, or rollback engine;
-- no public release until the owner selects and ratifies a license;
+- no public release in v0.2 (the owner ratified `MIT OR Apache-2.0` after the v0.2 tag, 2026-08-31; formal releases remain gated by `scripts/release-readiness.mjs`);
 - no autonomous self-improvement, AGI, or ASI claim.
 
 Independent review outcome: four reviewers issued “approve with conditions” and the CAIO issued “do not approve.” The integrated disposition therefore permits only development in a dedicated, disposable, non-sensitive local environment. Adoption, public distribution or service, persistent or unattended use, multi-user operation, sensitive-data handling, and write or external-effect authority remain blocked until the recorded high-severity conditions are resolved and independently re-reviewed.
+
+## V0.3 decision status (recorded 2026-08-31)
+
+- **D1 — License: RESOLVED.** Owner ratified `MIT OR Apache-2.0` on
+  2026-08-31; see `docs/LICENSING.md`. The owner component of blocker
+  `CAIO-H4` is closed; the remaining release-readiness controls (notices,
+  SBOM, approving disposition, protected owner approval, reproducibility)
+  keep packaging blocked.
+- **D2 — Tranche order: RECOMMENDED, NOT YET RATIFIED.** Recommended
+  dependency order: confinement (`GE-H1`, `CAIO-H3`, `SA-H1`) → conformance
+  (`SE-H1`) → falsifiable research (`RS-H1..H3`, `SE-H2`, `GE-H2`). Rationale:
+  live-provider conformance with unmediated egress and a readable host root
+  contradicts the threat model, and the charter defines conformance as the
+  entry condition for comparative research. Legitimate alternative: descope
+  confinement and proceed straight to research under the disposable-VM
+  posture, permanently capping confidentiality claims.
+- **D3 — Horizon-0 ratifications: DEFERRED.** Persona, three target
+  workflows, and budget/SLO ratification are required only before the
+  research tranche starts (`ASI-Agent-Astronomical-Plan.md`).
+
+Repository: public at `github.com/1deat0r/ASI-Agent` (source publication
+only; releases and adoption remain blocked as recorded above).

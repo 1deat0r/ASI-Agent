@@ -4,6 +4,7 @@ version = "0.2.0"
 edition = "2024"
 rust-version = "1.85"
 description = "Sovereign evolutionary meta-harness nucleus"
+license = "MIT OR Apache-2.0"
 publish = false
 
 [[bin]]

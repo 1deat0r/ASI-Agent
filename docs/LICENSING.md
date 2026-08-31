@@ -2,19 +2,27 @@
 
 Release status: BLOCKED
 
-Owner-ratified SPDX identifier: PENDING
+Owner-ratified SPDX identifier: MIT OR Apache-2.0
 
-An explicit owner decision is still required.
+Ratified by owner decision, 2026-08-31. The project is licensed under both
+`MIT` and `Apache-2.0`; recipients may choose either (`MIT OR Apache-2.0`),
+with full texts in `LICENSE-MIT` and `LICENSE-APACHE` and the root grant in
+`LICENSE`. Component-assimilation policy: this license covers ASI Agent
+source, documentation, specifications, scripts, schemas, and fixtures.
+Third-party harnesses, skills, models, and artifacts that the system can
+inspect or invoke remain external works under their own licenses and are
+not absorbed. Branding is not licensed; trademark rights are reserved.
 
-ASI Agent intentionally has no `LICENSE` file yet. Do not publish, redistribute, or describe the repository as open source until the owner explicitly selects and ratifies a license. This document records an engineering release gate, not legal advice.
+`Release status` below still governs binary packaging and formal releases
+only; publishing the public source repository does not flip it.
 
-The practical candidates are:
-
-- `Apache-2.0`: explicit patent terms and contributor protections, with more notice obligations.
-- `MIT`: short and permissive, with no express patent grant.
-- `MIT OR Apache-2.0`: lets downstream users choose either set of terms, at the cost of maintaining both notices.
-
-The owner should also decide whether imported adapters, documentation, fixtures, branding, and future model artifacts share one license or require separate notices. Third-party harnesses and skills are dependencies or untrusted inputs; their licenses are not absorbed into ASI Agent merely because the system can inspect or invoke them.
+The repository is public as of 2026-08-31 under the ratified dual license;
+the source tree may be referenced as open source under `MIT OR Apache-2.0`.
+This document records an engineering release gate, not legal advice. The
+`Apache-2.0` side carries the express patent grant; the `MIT` side minimizes
+notice obligations. Third-party harnesses and skills are dependencies or
+untrusted inputs; their licenses are not absorbed into ASI Agent merely
+because the system can inspect or invoke them.
 
 ## Mechanical guardrail
 

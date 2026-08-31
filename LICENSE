@@ -1,0 +1,30 @@
+ASI Agent is dual-licensed under the MIT License (LICENSE-MIT) and the
+Apache License, Version 2.0 (LICENSE-APACHE).
+
+SPDX-License-Identifier: MIT OR Apache-2.0
+
+Copyright (c) 2026 Benjamin Arnold
+
+You may use, reproduce, prepare derivative works of, publicly display,
+publicly perform, sublicense, and distribute this work and its derivative
+works in source or object form under the terms of either:
+
+  * the MIT License, as set out in LICENSE-MIT, or
+  * the Apache License, Version 2.0, as set out in LICENSE-APACHE,
+
+at your option. You need not comply with both licenses: choosing one
+satisfies this grant as to it. Contributions intentionally submitted for
+inclusion are licensed as MIT OR Apache-2.0 unless the contributor states
+otherwise.
+
+Third-party harnesses, skills, models, and other artifacts that ASI Agent
+can inspect or invoke remain external works under their own licenses; they
+are not absorbed into, or relicensed by, this work.
+
+Owner ratification: recorded in docs/LICENSING.md (2026-08-31).
+
+NOTE — RELEASE STATUS: this ratification licenses the public source tree.
+Binary packaging and formal releases remain gated by
+`node scripts/release-readiness.mjs` (docs/LICENSING.md), which requires
+additional evidence beyond licensing and currently reports blockers by
+design.

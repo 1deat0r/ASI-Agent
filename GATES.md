@@ -83,3 +83,26 @@ Scope: Preserve the verified v0.1 nucleus, then add the v0.2 OS-enforced worker 
   CHECK: node scripts/acceptance.mjs summary-v02 && printf '%s\\n' 'v0.2 release evidence verification passed'
   EXPECT: v0.2 release evidence verification passed
   EVIDENCE: exit=0; shell=/bin/sh; cwd=/run/media/mustbearnold/Projects/AI Agents/ASI-Agent; path=376930f8d5a4/32 entries; output=v0.2 summary acceptance passed | v0.2 release evidence verification passed\n
+
+## Post-tag addendum: license ratification (2026-08-31, owner decision)
+
+The v0.2 tag `v0.2-engineering-complete` (commit `01b3704`) freezes the
+verified engineering state. After that tag, the owner ratified
+`MIT OR Apache-2.0` (`docs/LICENSING.md`, `LICENSE`, `LICENSE-MIT`,
+`LICENSE-APACHE`) and directed public source publication. The release
+gate oracle was updated to track this reality — no gate above is reopened:
+
+- `scripts/release-readiness.mjs`: SPDX line now validates recognized
+  SPDX expression tokens (`MIT`, `Apache-2.0`, `OR`, `AND`, `WITH`) so the
+  license-only negative control still fails on placeholder content.
+- `scripts/acceptance.mjs` `release()`: asserts the ratified LICENSE clears
+  the license-missing blocker while `Release status: APPROVED` (and all
+  other release controls) keep packaging blocked.
+
+Post-change evidence: all ten acceptance scenarios pass (`policy`,
+`bloodline`, `skills`, `isolation`, `lineage`, `genome`, `release`,
+`reviews`, `summary`, `summary-v02`); `release-readiness.mjs
+--expect-blocked` exits 0 with the six remaining release controls
+(release status, third-party notices, SBOM, approving disposition,
+protected owner approval, reproducibility evidence). `cargo fmt` clean,
+strict `clippy -D warnings` clean, 25 unit tests pass on toolchain 1.98.0.

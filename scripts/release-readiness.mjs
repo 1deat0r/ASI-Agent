@@ -31,8 +31,10 @@ export function releaseBlockers(candidateRoot) {
   if (!/^Release status: APPROVED$/m.test(licensing)) {
     blockers.push("docs/LICENSING.md lacks owner-ratified Release status: APPROVED");
   }
-  const spdx = licensing.match(/^Owner-ratified SPDX identifier: ([A-Za-z0-9.+-]+)$/m)?.[1];
-  if (!spdx || spdx === "PENDING" || spdx === "UNDECIDED") {
+  const SPDX_TOKENS = new Set(["MIT", "Apache-2.0", "OR", "AND", "WITH"]);
+  const spdxRaw = licensing.match(/^Owner-ratified SPDX identifier: (.+)$/m)?.[1]?.trim();
+  const spdxValid = spdxRaw != null && spdxRaw.split(/\s+/).every((token) => SPDX_TOKENS.has(token));
+  if (!spdxValid) {
     blockers.push("docs/LICENSING.md lacks an owner-ratified SPDX identifier");
   }
 

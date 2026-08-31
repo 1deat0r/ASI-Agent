@@ -1,0 +1,13 @@
+{
+  "schema_version": "asi.independent-review.v0.2",
+  "role": "Senior LLM Engineer",
+  "reviewer_id": "01a03889-ceb6-7ae1-9234-8040f23ad044",
+  "independence_attestation": true,
+  "verdict": "approve-with-conditions",
+  "critical_findings": [],
+  "high_findings": [
+    { "id": "SE-H1", "title": "Adapter behavior is not fail-closed" },
+    { "id": "SE-H2", "title": "The advertised comparison unit is not represented at runtime" },
+    { "id": "SE-H3", "title": "The final gate oracle can report success with unmet gates" }
+  ]
+}

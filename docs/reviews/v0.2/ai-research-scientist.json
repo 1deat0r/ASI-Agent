@@ -1,0 +1,14 @@
+{
+  "schema_version": "asi.independent-review.v0.2",
+  "role": "AI Research Scientist",
+  "reviewer_id": "01a03889-ce25-7d83-ab2f-d8248fd6b4f1",
+  "independence_attestation": true,
+  "verdict": "approve-with-conditions",
+  "critical_findings": [],
+  "high_findings": [
+    { "id": "RS-H1", "title": "v0.2 does not yet encode a falsifiable experiment" },
+    { "id": "RS-H2", "title": "Proposed harness comparisons are causally confounded" },
+    { "id": "RS-H3", "title": "Sealed-holdout and contamination claims cannot currently be supported" },
+    { "id": "RS-H4", "title": "The final gate oracle can report readiness without proving it" }
+  ]
+}

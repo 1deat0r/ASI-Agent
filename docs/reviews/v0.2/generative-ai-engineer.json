@@ -1,0 +1,14 @@
+{
+  "schema_version": "asi.independent-review.v0.2",
+  "role": "Generative AI Engineer",
+  "reviewer_id": "01a03889-cf1e-7ac0-b20e-e7c4054b6baf",
+  "independence_attestation": true,
+  "verdict": "approve-with-conditions",
+  "critical_findings": [],
+  "high_findings": [
+    { "id": "GE-H1", "title": "Read-only does not protect readable data or credentials" },
+    { "id": "GE-H2", "title": "Current observability cannot support defensible harness comparisons" },
+    { "id": "GE-H3", "title": "Inspected plans are not bound to execution" },
+    { "id": "GE-H4", "title": "Release readiness is not a trustworthy oracle" }
+  ]
+}

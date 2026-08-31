@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://asi-agent.local/specs/independent-review.schema.json",
+  "title": "ASI Agent Independent Role Review Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "role",
+    "reviewer_id",
+    "independence_attestation",
+    "verdict",
+    "critical_findings",
+    "high_findings"
+  ],
+  "properties": {
+    "schema_version": { "const": "asi.independent-review.v0.2" },
+    "role": {
+      "enum": [
+        "AI Research Scientist",
+        "Senior LLM Engineer",
+        "Generative AI Engineer",
+        "Chief AI Officer (CAIO)",
+        "AI Solutions Architect"
+      ]
+    },
+    "reviewer_id": { "type": "string", "minLength": 1 },
+    "independence_attestation": { "const": true },
+    "verdict": { "enum": ["approve", "approve-with-conditions", "do-not-approve"] },
+    "critical_findings": {
+      "type": "array",
+      "items": { "$ref": "review-finding.schema.json" }
+    },
+    "high_findings": {
+      "type": "array",
+      "items": { "$ref": "review-finding.schema.json" }
+    }
+  }
+}

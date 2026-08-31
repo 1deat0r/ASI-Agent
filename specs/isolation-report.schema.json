@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://asi-agent.local/specs/isolation-report.schema.json",
+  "title": "ASI Agent Isolation Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "requested_mode",
+    "enforced",
+    "enforcer",
+    "filesystem",
+    "namespaces",
+    "ephemeral_writes",
+    "network",
+    "limitations"
+  ],
+  "properties": {
+    "schema_version": { "const": "asi.isolation-report.v0.1" },
+    "requested_mode": { "enum": ["required", "off"] },
+    "enforced": { "type": "boolean" },
+    "enforcer": { "type": "string", "minLength": 1 },
+    "filesystem": { "type": "string", "minLength": 1 },
+    "namespaces": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "ephemeral_writes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "network": { "type": "string", "minLength": 1 },
+    "limitations": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}

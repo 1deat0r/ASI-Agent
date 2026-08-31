@@ -1,0 +1,55 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Install Bubblewrap
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes bubblewrap
+
+      - name: Install pinned Rust toolchain
+        run: |
+          rustup toolchain install 1.98.0 --profile minimal --component clippy,rustfmt
+          rustup default 1.98.0
+
+      - name: Check formatting
+        run: cargo fmt --all -- --check
+
+      - name: Run strict Clippy
+        run: cargo clippy --all-targets --all-features -- -D warnings
+
+      - name: Run unit tests
+        run: cargo test --all-targets --all-features
+
+      - name: Build acceptance binary
+        run: cargo build --locked
+
+      - name: Run portable black-box acceptance
+        run: |
+          node scripts/acceptance.mjs policy
+          node scripts/acceptance.mjs bloodline
+          node scripts/acceptance.mjs skills
+          node scripts/acceptance.mjs isolation
+          node scripts/acceptance.mjs lineage
+          node scripts/acceptance.mjs genome
+          node scripts/acceptance.mjs release
+          node scripts/acceptance.mjs reviews
+          node scripts/acceptance.mjs summary
+          node scripts/acceptance.mjs summary-v02
+
+      - name: Confirm public release is blocked by owner and review controls
+        run: node scripts/release-readiness.mjs --expect-blocked

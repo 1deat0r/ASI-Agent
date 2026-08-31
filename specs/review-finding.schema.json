@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://asi-agent.local/specs/review-finding.schema.json",
+  "title": "ASI Agent Review Finding Reference",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "title"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[A-Z]+-H[0-9]+$" },
+    "title": { "type": "string", "minLength": 1 }
+  }
+}

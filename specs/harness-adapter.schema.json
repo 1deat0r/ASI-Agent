@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://asi-agent.local/specs/harness-adapter.schema.json",
+  "title": "ASI Agent Harness Descriptor",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "display_name",
+    "supported_version_prefixes",
+    "supported_effects",
+    "containment_claims",
+    "authority_owner",
+    "integration_status"
+  ],
+  "properties": {
+    "schema_version": { "const": "asi.harness-descriptor.v0.1" },
+    "id": { "type": "string", "minLength": 1 },
+    "display_name": { "type": "string", "minLength": 1 },
+    "executable_name": { "type": ["string", "null"] },
+    "supported_version_prefixes": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "supported_effects": {
+      "type": "array",
+      "items": {
+        "enum": ["none", "read-only", "workspace-write", "external"]
+      },
+      "uniqueItems": true
+    },
+    "containment_claims": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "authority_owner": { "const": "asi-agent" },
+    "integration_status": { "type": "string", "minLength": 1 }
+  }
+}

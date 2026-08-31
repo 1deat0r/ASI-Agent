@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://asi-agent.local/specs/review-disposition.schema.json",
+  "title": "ASI Agent Integrated Review Disposition",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "review_count",
+    "integrated_verdict",
+    "local_preview_status",
+    "adoption_status",
+    "public_release_status",
+    "reviews",
+    "findings"
+  ],
+  "properties": {
+    "schema_version": { "const": "asi.review-disposition.v0.2" },
+    "review_count": { "const": 5 },
+    "integrated_verdict": { "const": "do-not-approve-adoption-or-public-release" },
+    "local_preview_status": { "const": "development-only" },
+    "adoption_status": { "const": "blocked" },
+    "public_release_status": { "const": "blocked" },
+    "reviews": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["role", "verdict", "record"],
+        "properties": {
+          "role": { "type": "string", "minLength": 1 },
+          "verdict": { "enum": ["approve", "approve-with-conditions", "do-not-approve"] },
+          "record": { "type": "string", "pattern": "\\.json$" }
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "role",
+          "severity",
+          "title",
+          "status",
+          "resolution",
+          "release_blocking"
+        ],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[A-Z]+-H[0-9]+$" },
+          "role": { "type": "string", "minLength": 1 },
+          "severity": { "enum": ["critical", "high"] },
+          "title": { "type": "string", "minLength": 1 },
+          "status": { "enum": ["resolved", "scope-blocked"] },
+          "resolution": { "type": "string", "minLength": 1 },
+          "release_blocking": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}

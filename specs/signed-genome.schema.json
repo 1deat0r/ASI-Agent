@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://asi-agent.local/specs/signed-genome.schema.json",
+  "title": "ASI Agent Signed Harness Genome",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["material", "algorithm", "key_id", "signature_hex"],
+  "properties": {
+    "material": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "generated_at", "entries"],
+      "properties": {
+        "schema_version": { "const": "asi.harness-genome-material.v0.1" },
+        "generated_at": { "type": "string", "format": "date-time" },
+        "entries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "descriptor",
+              "installed",
+              "executable_path",
+              "executable_source",
+              "version",
+              "executable_sha256"
+            ],
+            "properties": {
+              "descriptor": { "$ref": "harness-adapter.schema.json" },
+              "installed": { "type": "boolean" },
+              "executable_path": { "type": ["string", "null"] },
+              "executable_source": { "type": ["string", "null"] },
+              "version": { "type": ["string", "null"] },
+              "executable_sha256": {
+                "type": ["string", "null"],
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            }
+          }
+        }
+      }
+    },
+    "algorithm": { "const": "Ed25519" },
+    "key_id": { "type": "string", "pattern": "^ed25519:[a-f0-9]{64}$" },
+    "signature_hex": { "type": "string", "pattern": "^[a-f0-9]{128}$" }
+  }
+}

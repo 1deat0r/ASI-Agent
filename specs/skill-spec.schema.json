@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://asi-agent.local/specs/skill-spec.schema.json",
+  "title": "ASI Agent Quarantined SkillSpec",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "state",
+    "name",
+    "source",
+    "risk_level",
+    "findings",
+    "lineage"
+  ],
+  "properties": {
+    "schema_version": { "const": "asi.skill.v0.1" },
+    "id": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "state": { "const": "quarantined" },
+    "name": { "type": "string", "minLength": 1 },
+    "description": { "type": ["string", "null"] },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "location", "content_sha256", "captured_at"],
+      "properties": {
+        "kind": { "const": "local-file" },
+        "location": { "type": "string", "minLength": 1 },
+        "content_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "captured_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "risk_level": {
+      "enum": ["none", "low", "medium", "high", "critical"]
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["code", "severity", "explanation"],
+        "properties": {
+          "code": { "type": "string", "minLength": 1 },
+          "severity": { "enum": ["low", "medium", "high", "critical"] },
+          "explanation": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "lineage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["parents", "transformations"],
+      "properties": {
+        "parents": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+          "uniqueItems": true
+        },
+        "transformations": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

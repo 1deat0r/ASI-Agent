@@ -1,0 +1,199 @@
+{
+  "schema_version": "asi.review-disposition.v0.2",
+  "review_count": 5,
+  "integrated_verdict": "do-not-approve-adoption-or-public-release",
+  "local_preview_status": "development-only",
+  "adoption_status": "blocked",
+  "public_release_status": "blocked",
+  "reviews": [
+    {
+      "role": "AI Research Scientist",
+      "verdict": "approve-with-conditions",
+      "record": "ai-research-scientist.json"
+    },
+    {
+      "role": "Senior LLM Engineer",
+      "verdict": "approve-with-conditions",
+      "record": "senior-llm-engineer.json"
+    },
+    {
+      "role": "Generative AI Engineer",
+      "verdict": "approve-with-conditions",
+      "record": "generative-ai-engineer.json"
+    },
+    {
+      "role": "Chief AI Officer (CAIO)",
+      "verdict": "do-not-approve",
+      "record": "caio.json"
+    },
+    {
+      "role": "AI Solutions Architect",
+      "verdict": "approve-with-conditions",
+      "record": "ai-solutions-architect.json"
+    }
+  ],
+  "findings": [
+    {
+      "id": "RS-H1",
+      "role": "AI Research Scientist",
+      "severity": "high",
+      "title": "v0.2 does not yet encode a falsifiable experiment",
+      "status": "scope-blocked",
+      "resolution": "v0.2 is explicitly an engineering nucleus. Scientific self-improvement claims are blocked until versioned ExperimentSpec, evaluator, result, preregistration, and statistical protocols exist.",
+      "release_blocking": true
+    },
+    {
+      "id": "RS-H2",
+      "role": "AI Research Scientist",
+      "severity": "high",
+      "title": "Proposed harness comparisons are causally confounded",
+      "status": "scope-blocked",
+      "resolution": "No causal harness ranking or improvement claim is permitted from v0.2 runs. Matched model, tools, information, turns, tokens, compute, and cost remain required.",
+      "release_blocking": true
+    },
+    {
+      "id": "RS-H3",
+      "role": "AI Research Scientist",
+      "severity": "high",
+      "title": "Sealed-holdout and contamination claims cannot currently be supported",
+      "status": "scope-blocked",
+      "resolution": "Confirmatory evaluation is blocked until an external Crucible keeps hidden labels and holdouts outside worker-visible mounts and egress.",
+      "release_blocking": true
+    },
+    {
+      "id": "RS-H4",
+      "role": "AI Research Scientist",
+      "severity": "high",
+      "title": "The final gate oracle can report readiness without proving it",
+      "status": "resolved",
+      "resolution": "summary-v02 now requires exact unique G1-G15 checked blocks with non-pending evidence and emits a digest over the reviewed source and evidence files; the external gate runner re-executes every gate.",
+      "release_blocking": false
+    },
+    {
+      "id": "SE-H1",
+      "role": "Senior LLM Engineer",
+      "severity": "high",
+      "title": "Adapter behavior is not fail-closed",
+      "status": "scope-blocked",
+      "resolution": "Unknown and unsupported versions now fail before planning, reviewed compatibility prefixes and executable fingerprints bind the plan, and negative controls enforce both cases. Full live conformance for every provider-backed adapter remains a public and sensitive-data blocker.",
+      "release_blocking": true
+    },
+    {
+      "id": "SE-H2",
+      "role": "Senior LLM Engineer",
+      "severity": "high",
+      "title": "The advertised comparison unit is not represented at runtime",
+      "status": "scope-blocked",
+      "resolution": "v0.2 cannot make comparative or scientific attribution claims. Experiment identity, provider/model revision, sampling, tools, usage, cost, trials, and evaluators are required in a later ExperimentSpec tranche.",
+      "release_blocking": true
+    },
+    {
+      "id": "SE-H3",
+      "role": "Senior LLM Engineer",
+      "severity": "high",
+      "title": "The final gate oracle can report success with unmet gates",
+      "status": "resolved",
+      "resolution": "The final oracle parses exact gate blocks, requires G1-G15 checked with evidence, binds results to a source digest, and is itself re-executed by the gate runner.",
+      "release_blocking": false
+    },
+    {
+      "id": "GE-H1",
+      "role": "Generative AI Engineer",
+      "severity": "high",
+      "title": "Read-only does not protect readable data or credentials",
+      "status": "scope-blocked",
+      "resolution": "The child environment is cleared to a narrow baseline, but readable file credentials and shared egress remain. Use is restricted to a disposable VM or dedicated non-sensitive account with scoped credentials; public, persistent, multi-user, and write-capable modes are blocked.",
+      "release_blocking": true
+    },
+    {
+      "id": "GE-H2",
+      "role": "Generative AI Engineer",
+      "severity": "high",
+      "title": "Current observability cannot support defensible harness comparisons",
+      "status": "scope-blocked",
+      "resolution": "No defensible comparison claim is allowed in v0.2. The signed plan, worker version/fingerprint, genome digest, task/output hashes, duration, and isolation are engineering evidence only.",
+      "release_blocking": true
+    },
+    {
+      "id": "GE-H3",
+      "role": "Generative AI Engineer",
+      "severity": "high",
+      "title": "Inspected plans are not bound to execution",
+      "status": "resolved",
+      "resolution": "Execution now requires the exact digest from a separately inspected deterministic plan, rechecks the worker fingerprint, verifies a signed current genome, and records all digests in Bloodline.",
+      "release_blocking": false
+    },
+    {
+      "id": "GE-H4",
+      "role": "Generative AI Engineer",
+      "severity": "high",
+      "title": "Release readiness is not a trustworthy oracle",
+      "status": "resolved",
+      "resolution": "Release readiness now requires owner-ratified licensing metadata, complete gates, structured review approval, third-party notices, SBOM, protected release approval, and reproducibility evidence. v0.2 remains blocked by its disposition and missing license.",
+      "release_blocking": false
+    },
+    {
+      "id": "CAIO-H1",
+      "role": "Chief AI Officer (CAIO)",
+      "severity": "high",
+      "title": "Untrusted Skill source traversal remains",
+      "status": "resolved",
+      "resolution": "Skill reads now reject every symlink component and use Linux openat2 with BENEATH, NO_MAGICLINKS, and NO_SYMLINKS. Direct and nested SKILL.md symlink adversarial tests fail closed.",
+      "release_blocking": false
+    },
+    {
+      "id": "CAIO-H2",
+      "role": "Chief AI Officer (CAIO)",
+      "severity": "high",
+      "title": "The independent-review gate is syntactic, not dispositive",
+      "status": "resolved",
+      "resolution": "Each review now has a schema-validated independent record. Acceptance requires all five roles, unique finding IDs, complete disposition coverage, blocked status for unresolved findings, and propagation of a non-approving verdict.",
+      "release_blocking": false
+    },
+    {
+      "id": "CAIO-H3",
+      "role": "Chief AI Officer (CAIO)",
+      "severity": "high",
+      "title": "External-effect denial is not independently enforceable",
+      "status": "scope-blocked",
+      "resolution": "Environment inheritance was removed, but remote actions through readable credentials and shared network remain possible. External-effect safety is not claimed; adoption, public, persistent, multi-user, sensitive-data, and write-capable operation are blocked.",
+      "release_blocking": true
+    },
+    {
+      "id": "CAIO-H4",
+      "role": "Chief AI Officer (CAIO)",
+      "severity": "high",
+      "title": "Public release readiness is not established",
+      "status": "scope-blocked",
+      "resolution": "The readiness oracle now requires licensing ratification, notices, SBOM, review approval, protected approval, and reproducibility evidence. Those artifacts are deliberately absent or blocked, so public packaging cannot proceed.",
+      "release_blocking": true
+    },
+    {
+      "id": "SA-H1",
+      "role": "AI Solutions Architect",
+      "severity": "high",
+      "title": "External effects and secret exfiltration are not technically denied",
+      "status": "scope-blocked",
+      "resolution": "A narrow clean environment reduces ambient leakage, but host-readable files and shared network remain. Dedicated secret-free isolation is mandatory for development and all broader operating modes are blocked.",
+      "release_blocking": true
+    },
+    {
+      "id": "SA-H2",
+      "role": "AI Solutions Architect",
+      "severity": "high",
+      "title": "Signed genomes are not bound to executions",
+      "status": "resolved",
+      "resolution": "A current signed genome verified with an explicitly pinned key is mandatory for execute; its digest, key id, generation time, worker version, worker fingerprint, and approved plan digest are bound into the run evidence.",
+      "release_blocking": false
+    },
+    {
+      "id": "SA-H3",
+      "role": "AI Solutions Architect",
+      "severity": "high",
+      "title": "The final v0.2 acceptance oracle can false-pass",
+      "status": "resolved",
+      "resolution": "The oracle requires exact checked gates and evidence and emits a source digest; the final gate runner independently re-executes every declared check.",
+      "release_blocking": false
+    }
+  ]
+}

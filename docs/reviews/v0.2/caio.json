@@ -1,0 +1,14 @@
+{
+  "schema_version": "asi.independent-review.v0.2",
+  "role": "Chief AI Officer (CAIO)",
+  "reviewer_id": "01a03889-cf86-7c50-8705-0126a8b3ee5c",
+  "independence_attestation": true,
+  "verdict": "do-not-approve",
+  "critical_findings": [],
+  "high_findings": [
+    { "id": "CAIO-H1", "title": "Untrusted Skill source traversal remains" },
+    { "id": "CAIO-H2", "title": "The independent-review gate is syntactic, not dispositive" },
+    { "id": "CAIO-H3", "title": "External-effect denial is not independently enforceable" },
+    { "id": "CAIO-H4", "title": "Public release readiness is not established" }
+  ]
+}

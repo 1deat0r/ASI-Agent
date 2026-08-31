@@ -1,0 +1,13 @@
+{
+  "schema_version": "asi.independent-review.v0.2",
+  "role": "AI Solutions Architect",
+  "reviewer_id": "01a03889-cffa-7123-bb8e-e3f083269c71",
+  "independence_attestation": true,
+  "verdict": "approve-with-conditions",
+  "critical_findings": [],
+  "high_findings": [
+    { "id": "SA-H1", "title": "External effects and secret exfiltration are not technically denied" },
+    { "id": "SA-H2", "title": "Signed genomes are not bound to executions" },
+    { "id": "SA-H3", "title": "The final v0.2 acceptance oracle can false-pass" }
+  ]
+}
